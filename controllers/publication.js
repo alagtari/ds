@@ -32,9 +32,6 @@ const add = async (req, res) => {
 
 const getById = (req, res) => {
   Publication.findOne({ _id: req.params.id })
-    .populate("category")
-    .populate("author")
-    .exec()
     .then((publication) => {
       if (!publication) {
         res.status(404).json({
@@ -58,5 +55,4 @@ const getById = (req, res) => {
 module.exports = {
   add,
   getById,
-
 };

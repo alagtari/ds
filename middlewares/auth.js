@@ -9,7 +9,8 @@ module.exports.loggedMiddleware = (req, res, next) => {
     User.findOne({_id:userId}).then((result) => {
       if(result){req.auth = {
         userId: userId,
-        role: result.role
+        role: result.role,
+        publications: result.publications
       }
       next()}
       else{
