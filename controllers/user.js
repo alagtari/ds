@@ -29,6 +29,7 @@ const validation = (req, res, next) => {
 const info = (req, res, next) => {
   User.findOne({ _id: req.auth.userId })
     .populate("publications")
+    .select("-password")
     .exec()
     .then((user) => {
       if (!user) {
