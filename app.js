@@ -2,11 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
-const MONGODB_URI = "mongodb://127.0.0.1:27017/Books";
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const MONGODB_URI = "mongodb://127.0.0.1:27017/ds";
+const authRoutes = require("./routes/auth");
+
+mongoose.connect(MONGODB_URI);
 
 const db = mongoose.connection;
 
@@ -30,5 +29,7 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.use("/api/auth", authRoutes);
 
-module.exports =app
+
+module.exports = app;
