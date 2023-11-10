@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
   password: { type: String},
   role: { type: String, enum: ["author", "admin"], default: "author" },
   status: { type: String, enum: ["EA", "V"], default: "EA" },
-  favorite: [{ type: mongoose.Schema.Types.ObjectId, ref: "Publication" }],
+  publications: [{ type: mongoose.Schema.Types.ObjectId, ref: "Publication" }],
 });
 
 module.exports = mongoose.model("User", userSchema);

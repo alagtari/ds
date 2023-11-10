@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 const MONGODB_URI = "mongodb://127.0.0.1:27017/ds";
 const authRoutes = require("./routes/auth");
+const publicationRoutes = require("./routes/publication");
 
 mongoose.connect(MONGODB_URI);
 
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/api/auth", authRoutes);
+app.use("/api/publication", publicationRoutes);
 
 
 module.exports = app;
